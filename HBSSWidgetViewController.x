@@ -178,6 +178,7 @@ BOOL showTwitter, showFacebook, showMessages;
 	} else if (gestureRecognizer.view.tag == HBSSServiceMessages) {
 		if (_aukiClass && [_aukiClass respondsToSelector:@selector(doUrThing:withImages:)]) {
 			[_aukiClass doUrThing:nil withImages:@[ lastPhoto ]];
+			return;
 		} else {
 			viewController = [[[MFMessageComposeViewController alloc] init] autorelease];
 			((MFMessageComposeViewController *)viewController).messageComposeDelegate = self;
