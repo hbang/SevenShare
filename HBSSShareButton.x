@@ -1,4 +1,5 @@
 #import "HBSSShareButton.h"
+#import <SpringBoard/SBTodayBulletinCell.h>
 
 @implementation HBSSShareButton
 
@@ -6,9 +7,9 @@
 	HBSSShareButton *button = [self buttonWithType:UIButtonTypeSystem];
 
 	button.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	button.tintColor = [UIColor whiteColor];
-	button.titleLabel.font = [UIFont systemFontOfSize:17.f];
-	[button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	button.tintColor = [%c(SBTodayBulletinCell) defaultFontColor];
+	button.titleLabel.font = [%c(SBTodayBulletinCell) defaultFont];
+	[button setTitleColor:[%c(SBTodayBulletinCell) defaultFontColor] forState:UIControlStateNormal];
 
 	return button;
 }
