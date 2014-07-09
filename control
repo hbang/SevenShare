@@ -1,6 +1,6 @@
 Package: ws.hbang.sevenshare
 Name: SevenShare
-Version: 1.0
+Version: 1.0.1
 Depends: mobilesubstrate
 Architecture: iphoneos-arm
 Description: Notification Center share widget for iOS 7

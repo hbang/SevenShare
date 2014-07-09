@@ -1,5 +1,3 @@
-TARGET = :clang:7.0:7.0
-
 include theos/makefiles/common.mk
 
 BUNDLE_NAME = SevenShare
