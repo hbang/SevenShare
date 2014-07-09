@@ -11,7 +11,6 @@
 #import <TwitkaFly/LibTwitkaFly.h>
 #import <UIKit/UIWindow+Private.h>
 #import <UIKit/UIImage+Private.h>
-#include <objc/runtime.h>
 
 void HBSSLoadPrefs();
 
@@ -70,9 +69,9 @@ BOOL showTwitter, showFacebook, showMessages;
 	_composeWindow.rootViewController = [[[UINavigationController alloc] initWithRootViewController:[[[UIViewController alloc] init] autorelease]] autorelease];
 	((UINavigationController *)_composeWindow.rootViewController).navigationBarHidden = YES;
 
-	_twitkaFlyClass = objc_getClass("LibTwitkaFly");
-	_biteSMSClass = objc_getClass("BSQCQRLauncher");
-	_aukiClass = objc_getClass("KJUARR");
+	_twitkaFlyClass = %c(LibTwitkaFly);
+	_biteSMSClass = %c(BSQCQRLauncher);
+	_aukiClass = %c(KJUARR);
 
 	if (showTwitter) {
 		buttons++;
