@@ -176,15 +176,13 @@ BOOL showTwitter, showFacebook, showMessages;
 		[[_twitkaFlyClass sharedTwitkaFly] showSheetWithInitialText:@"" andInitialImage:lastPhoto];
 		return;
 	} else if (gestureRecognizer.view.tag == HBSSServiceMessages) {
-		/*
-		 unfortunately auki doesn't have anything for this right now.
-		 benno should be adding a public api for this soon. unsure
-		 about bitesms.
-		*/
-
-		viewController = [[[MFMessageComposeViewController alloc] init] autorelease];
-		((MFMessageComposeViewController *)viewController).messageComposeDelegate = self;
-		[(MFMessageComposeViewController *)viewController addAttachmentData:UIImageJPEGRepresentation(lastPhoto, 1.f) typeIdentifier:(NSString *)kUTTypeJPEG filename:@"image.jpg"];
+		if (_aukiClass && [_aukiClass respondsToSelector:@selector(doUrThing:withImages:)]) {
+			[_aukiClass doUrThing:nil withImages:@[ lastPhoto ]];
+		} else {
+			viewController = [[[MFMessageComposeViewController alloc] init] autorelease];
+			((MFMessageComposeViewController *)viewController).messageComposeDelegate = self;
+			[(MFMessageComposeViewController *)viewController addAttachmentData:UIImageJPEGRepresentation(lastPhoto, 1.f) typeIdentifier:(NSString *)kUTTypeJPEG filename:@"image.jpg"];
+		}
 	} else {
 		viewController = [SLComposeViewController composeViewControllerForServiceType:[self serviceForButton:gestureRecognizer.view]];
 		((SLComposeViewController *)viewController).completionHandler = ^(SLComposeViewControllerResult result) {
